@@ -4,16 +4,14 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.formbuilder.TextFieldState
 import com.example.formbuilder.composables.datepicker.remeberOutlinedDateFieldState
 import com.example.formbuilder.composables.textfields.FormOutLinedTextInputField
@@ -77,6 +75,28 @@ fun ProposalFormBodyUI(
             FormOutLinedTextInputField("Age",fmSt.getState(Constants.FIELD_NAME_CUSTOMER_AGE),keyboardType = KeyboardType.Number)
             FormOutLinedTextInputField("Total Due",fmSt.getState(Constants.FIELD_NAME_CUSTOMER_TOTAL_DUE),keyboardType = KeyboardType.Number)
             FormDropDownFieldWith(state = fmSt.getState(Constants.FIELD_NAME_CUSTOMER_PIN))
+            testButton(viewModel)
         }
+    }
+}
+
+@Composable
+fun testButton(viewModel : ProposalDetailsScreenViewModel){
+    Button(
+        modifier = Modifier
+            .height(60.dp)
+            .padding(
+                start = 16.dp,
+                end = 16.dp,
+                top = 4.dp,
+                bottom = 4.dp
+            ),
+        onClick = {
+          viewModel.checkFormStatus()
+        }) {
+        Text(
+            text = "Check Data",
+            fontSize = 30.sp
+        )
     }
 }

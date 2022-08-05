@@ -8,6 +8,9 @@ import com.example.data.models.Proposal
 import com.example.data.repositories.ProposalRepository
 import com.example.formbuilder.*
 import com.example.forms.proposals.Constants
+import com.example.forms.proposals.Constants.FIELD_NAME_CUSTOMER_COMPANY
+import com.example.forms.proposals.Constants.FIELD_NAME_CUSTOMER_DIVISION
+import com.example.forms.proposals.Constants.FIELD_NAME_CUSTOMER_LOCATION
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -54,6 +57,18 @@ class ProposalDetailsScreenViewModel @Inject constructor(
         total_due = 0.0,
         pin = 0,
     ))))
+
+    fun checkFormStatus(){
+        val state = selectedFormState.value.getState<DropDownState>(FIELD_NAME_CUSTOMER_COMPANY)
+        val stateDiv = selectedFormState.value.getState<DropDownState>(FIELD_NAME_CUSTOMER_DIVISION)
+        val stateLoc = selectedFormState.value.getState<DropDownState>(FIELD_NAME_CUSTOMER_LOCATION)
+        if(state.value.equals("AXIS")){
+            stateDiv.value = ""
+            stateLoc.value = ""
+        }
+        Log.d("getSelectedProposal", "company current value is: ${state.value}")
+
+    }
     val selectedFormState: StateFlow<FormState<BaseState<out Any>>> = _selectedFormState
 
 
