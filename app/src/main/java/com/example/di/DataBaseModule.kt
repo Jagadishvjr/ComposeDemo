@@ -23,7 +23,9 @@ object DataBaseModule {
         context,
         PewiseDataBase::class.java,
         DATABASE_NAME
-    ).build()
+    )
+        .fallbackToDestructiveMigration()
+        .build()
 
     @Singleton
     @Provides

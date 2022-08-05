@@ -6,12 +6,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.navigation.destinations.listComposable
 import com.example.navigation.destinations.proposalDetailComposable
+import com.example.ui.viewmodels.ProposalDetailsScreenViewModel
 import com.example.ui.viewmodels.ProposalViewModel
 import com.example.utils.Constants.SCREEN_LIST
 
 @Composable
 fun SetUpNavigation(
     proposalViewModel: ProposalViewModel,
+    proposalDetailViewModel: ProposalDetailsScreenViewModel,
     navController: NavHostController
 ){
 
@@ -28,6 +30,7 @@ fun SetUpNavigation(
             navigateToProposalDetailsScreen = screen.proposal_detail
         )
         proposalDetailComposable(
+            proposalDetailsViewModel = proposalDetailViewModel,
           navigateToListScreen = screen.list
         )
     }

@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.navigation.SetUpNavigation
 import com.example.ui.theme.AppComposeTheme
+import com.example.ui.viewmodels.ProposalDetailsScreenViewModel
 import com.example.ui.viewmodels.ProposalViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var navController : NavHostController
     private val proposalViewModel : ProposalViewModel by viewModels()
+    private val proposalDetailViewModel : ProposalDetailsScreenViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
                 //ScaffoldSample()
                 navController = rememberNavController()
                 SetUpNavigation(
+                    proposalDetailViewModel = proposalDetailViewModel,
                     proposalViewModel = proposalViewModel,
                     navController = navController
                 )

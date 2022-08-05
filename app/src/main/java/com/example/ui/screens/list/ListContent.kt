@@ -1,5 +1,7 @@
 package com.example.ui.screens.list
 
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -12,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.data.models.Proposal
 import com.example.ui.theme.LARGE_PADDING
 import com.example.ui.theme.TASK_ITEM_ELEVATION
@@ -53,6 +56,7 @@ fun ProposalItem(
         shape = RectangleShape,
         elevation = TASK_ITEM_ELEVATION,
         onClick = {
+            Log.d("ListScreen", "Surface: ListItem clicked")
             navigateToProposalScreen(proposal.id)
         }
     ) {
@@ -86,21 +90,22 @@ fun ProposalItem(
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview(){
-    ProposalItem(
-       proposal =  Proposal(
-            id = 0,
-            proposal_no = "",
-            dob = "",
-            company = "",
-           division = "",
-           location = "",
-           customer_name = "",
-           age = 12,
-           mobile_no = "",
-           email = "",
-           pin = 5093444,
-           total_due = 20.0
-        ),
-        navigateToProposalScreen = {}
-    )
+//    ProposalItem(
+//
+//       proposal =  Proposal(
+//            id = 0,
+//            proposal_no = "",
+//            dob = "",
+//            company = "",
+//           division = "",
+//           location = "",
+//           customer_name = "",
+//           age = 12,
+//           mobile_no = "",
+//           email = "",
+//           pin = 5093444,
+//           total_due = 20.0
+//        ),
+//        navigateToProposalScreen = {}
+//    )
 }

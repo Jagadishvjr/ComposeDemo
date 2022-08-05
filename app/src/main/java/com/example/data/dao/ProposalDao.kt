@@ -1,11 +1,23 @@
 package com.example.data.dao
 
 import androidx.room.*
-import com.example.data.models.Proposal
+import com.example.data.models.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProposalDao {
+
+    @Query("SELECT * FROM pincode_table ORDER BY id ASC")
+    fun getAllPinCodes() : Flow<List<PinCode>>
+
+    @Query("SELECT * FROM company_table ORDER BY id ASC")
+    fun getCompCodes() : Flow<List<CompanyCode>>
+
+    @Query("SELECT * FROM division_table ORDER BY id ASC")
+    fun getDivisionCodes() : Flow<List<DivisionCode>>
+
+    @Query("SELECT * FROM location_table ORDER BY id ASC")
+    fun getLocationCodes() : Flow<List<LocationCode>>
 
     @Query("SELECT * FROM proposals_table ORDER BY id ASC")
     fun getAllProposals() : Flow<List<Proposal>>
